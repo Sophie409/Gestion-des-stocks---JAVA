@@ -92,11 +92,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 //			new FenetreSuppressionCategorie(tabCategories);
 //		}
 		if (e.getSource() == btAchat) {
-			// ControllerAchatVente.demandeAchat();
-			new FenetreAchat(tabProduits);			
+			ControllerAchatVente.demandeAchat();
+			//new FenetreAchat(tabProduits);			
 		}
 		if (e.getSource() == btVente) {
-			new FenetreVente(tabProduits);
+			ControllerAchatVente.demandeVente();
+			//new FenetreVente(tabProduits);
 		}
 		if (e.getSource() == btQuitter){
 			System.out.println("Au revoir");
