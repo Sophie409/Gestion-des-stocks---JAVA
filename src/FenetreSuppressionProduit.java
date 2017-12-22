@@ -27,6 +27,9 @@ public class FenetreSuppressionProduit extends JFrame implements ActionListener 
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btSupprimer) {
+			ControllerNouveauSuppression.supprimerProduit((String) combo.getSelectedItem());
+		}
 		this.dispose();
 	}
 

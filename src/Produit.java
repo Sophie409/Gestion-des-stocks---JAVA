@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class Produit implements I_Produit{
 	

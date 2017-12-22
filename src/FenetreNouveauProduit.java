@@ -46,6 +46,9 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btValider) {
+			ControllerNouveauSuppression.ajouterProduit(txtNom.getText(), Double.parseDouble(txtPrixHT.getText()), Integer.parseInt(txtQte.getText()));
+		}
 		this.dispose();
 	}
 

@@ -72,21 +72,32 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 /* Même chose pour tabCategories (partie 4) */ 		
 //		String[] tabCategories = new String[] {"Bio", "Luxe" };
 		
-		if (e.getSource() == btAfficher)
-			new FenetreAffichage("ajourd'hui nous allons faire de la programmation en 5 couches");
-		if (e.getSource() == btNouveauProduit)
+		if (e.getSource() == btAfficher) {
+			ControllerEtatStock.affichageStock();
+//			new FenetreAffichage("aujourd'hui nous allons faire de la programmation en 5 couches");
+		}		
+		if (e.getSource() == btNouveauProduit) {
 //			new FenetreNouveauProduit(tabCategories);
-			new FenetreNouveauProduit();
-		if (e.getSource() == btSupprimerProduit)
-			new FenetreSuppressionProduit(tabProduits);
-//		if (e.getSource() == btNouvelleCategorie)
+//			new FenetreNouveauProduit();
+			ControllerNouveauSuppression.demandeAjout();
+		}
+		if (e.getSource() == btSupprimerProduit) {
+//			new FenetreSuppressionProduit(tabProduits);
+			ControllerNouveauSuppression.demandeSuppression();
+		}
+//		if (e.getSource() == btNouvelleCategorie) {
 //			new FenetreNouvelleCategorie();
-//		if (e.getSource() == btSupprimerCategorie)
+//		}
+//		if (e.getSource() == btSupprimerCategorie) {
 //			new FenetreSuppressionCategorie(tabCategories);
-		if (e.getSource() == btAchat)
-			new FenetreAchat(tabProduits);
-		if (e.getSource() == btVente)
+//		}
+		if (e.getSource() == btAchat) {
+			// ControllerAchatVente.demandeAchat();
+			new FenetreAchat(tabProduits);			
+		}
+		if (e.getSource() == btVente) {
 			new FenetreVente(tabProduits);
+		}
 		if (e.getSource() == btQuitter){
 			System.out.println("Au revoir");
 			System.exit(0);
