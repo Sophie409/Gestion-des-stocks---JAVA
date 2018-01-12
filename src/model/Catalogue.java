@@ -26,6 +26,7 @@ public class Catalogue implements I_Catalogue {
 		return false;
 	}
 
+	
 	@Override
 	public boolean addProduit(String nom, double prix, int qte) {
 		if (prix > 0 && qte >= 0) {
@@ -137,11 +138,11 @@ public class Catalogue implements I_Catalogue {
 			bd1 = bd1.setScale(2, BigDecimal.ROUND_HALF_UP);
 			BigDecimal bd2 = new BigDecimal(i_Produit.getPrixUnitaireTTC());
 			bd2 = bd2.setScale(2, BigDecimal.ROUND_HALF_UP);
-			str += i_Produit.getNom()+" - prix HT : "+bd1+" € - prix TTC : "+bd2+" € - quantité en stock : "+i_Produit.getQuantite()+"\n";
+			str += i_Produit.getNom()+" - prix HT : "+bd1+" ï¿½ - prix TTC : "+bd2+" ï¿½ - quantitï¿½ en stock : "+i_Produit.getQuantite()+"\n";
 		}
 		BigDecimal bd3 = new BigDecimal(this.getMontantTotalTTC());
 		bd3 = bd3.setScale(2, BigDecimal.ROUND_HALF_UP);
-		str += "\nMontant total TTC du stock : "+bd3+" €";
+		str += "\nMontant total TTC du stock : "+bd3+" ï¿½";
 		str = str.replaceAll("\\.", ",");
 		return str;
 	}
