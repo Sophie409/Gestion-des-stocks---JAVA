@@ -1,3 +1,7 @@
+package controller;
+import model.Catalogue;
+import view.FenetreAchat;
+import view.FenetreVente;
 
 public class ControllerAchatVente {
 	

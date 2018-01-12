@@ -1,6 +1,9 @@
+package view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import controller.ControllerNouveauSuppression;
 
 public class FenetreNouveauProduit extends JFrame implements ActionListener {
 

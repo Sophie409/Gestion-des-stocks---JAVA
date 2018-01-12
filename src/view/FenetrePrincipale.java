@@ -1,6 +1,11 @@
+package view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import controller.ControllerAchatVente;
+import controller.ControllerEtatStock;
+import controller.ControllerNouveauSuppression;
 
 
 

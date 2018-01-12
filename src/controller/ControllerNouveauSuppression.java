@@ -1,3 +1,7 @@
+package controller;
+import model.Catalogue;
+import view.FenetreNouveauProduit;
+import view.FenetreSuppressionProduit;
 
 public class ControllerNouveauSuppression {
 	

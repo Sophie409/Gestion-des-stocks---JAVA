@@ -1,8 +1,8 @@
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
+package model;
 
 public class Produit implements I_Produit{
 	
+	private int id;
 	private String nom;
 	private double prixUnitaireHT;
 	private int quantiteStock;
@@ -33,6 +33,14 @@ public class Produit implements I_Produit{
 	}
 
 	// getters et setters
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	@Override
 	public String getNom() {

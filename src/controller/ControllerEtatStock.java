@@ -1,3 +1,6 @@
+package controller;
+import model.Catalogue;
+import view.FenetreAffichage;
 
 public class ControllerEtatStock {
 
