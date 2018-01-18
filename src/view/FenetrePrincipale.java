@@ -21,7 +21,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 	private JButton btVente;
 	private JButton btQuitter;
 
-	
 	public FenetrePrincipale() {
 		
 		setTitle("exercice Produits");
@@ -122,8 +121,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 	public void windowIconified(WindowEvent arg0) {}
 	public void windowOpened(WindowEvent arg0) {}
 
-	
-	
 	public static void main(String[] args) {
 		new FenetrePrincipale();
 	}

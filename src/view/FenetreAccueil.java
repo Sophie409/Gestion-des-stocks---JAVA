@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import controller.ControllerCatalogue;
+
 public class FenetreAccueil extends JFrame implements ActionListener {
 
 	private JButton btAjouter, btSupprimer, btSelectionner;
@@ -85,27 +87,23 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btAjouter)
-		{
+		if (e.getSource() == btAjouter) {
 			String texteAjout = txtAjouter.getText();
-			if (!texteAjout.equals(""))
-			{
-				System.out.println("ajouter le catalogue "+texteAjout);
+			if (!texteAjout.equals("")) {
+				ControllerCatalogue.ajouterCatalogue(texteAjout);
 				txtAjouter.setText(null);
 			}
 		}
-		if (e.getSource() == btSupprimer)
-		{
+		if (e.getSource() == btSupprimer) {
 			String texteSupprime = (String)cmbSupprimer.getSelectedItem();
-			if (texteSupprime != null)
-				System.out.println("supprime catalogue "+texteSupprime);
+			if (texteSupprime != null) {
+				ControllerCatalogue.supprimerCatalogue(texteSupprime);
+			}
 		}
-		if (e.getSource() == btSelectionner)
-		{
+		if (e.getSource() == btSelectionner) {
 			String texteSelection = (String)cmbSupprimer.getSelectedItem();
-			if (texteSelection != null) 
-			{
-				System.out.println("selectionne catalogue "+texteSelection);
+			if (texteSelection != null)  {
+				ControllerCatalogue.afficherCatalogue(texteSelection);
 				this.dispose();
 			}
 		}	

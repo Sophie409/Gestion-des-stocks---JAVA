@@ -11,12 +11,23 @@ import dao.ProduitDAO;
 import java.util.Arrays;
 
 public class Catalogue implements I_Catalogue {
-	
+
+	public String nom;
+
 	private List<I_Produit> lesProduits;
 	I_ProduitDAO produitDAO = new ProduitDAO();
 	
-	public Catalogue() {
+	public Catalogue(String nom) {
+		this.nom = nom;
 		this.lesProduits = produitDAO.selectionnerTousLesProduits();
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	
 	@Override
