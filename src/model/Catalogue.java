@@ -1,21 +1,22 @@
 package model;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Iterator;
+
+import dao.I_ProduitDAO;
+import dao.ProduitDAO;
+
 import java.util.Arrays;
 
 public class Catalogue implements I_Catalogue {
-
-	private static ArrayList<I_Produit> lesProduits;
+	
+	private List<I_Produit> lesProduits;
+	I_ProduitDAO produitDAO = new ProduitDAO();
 	
 	public Catalogue() {
-		this.lesProduits = new ArrayList<>();
-		this.addProduit("Mars", 10, 5);
-		this.addProduit("Treets", 10, 4);
-		this.addProduit("Raider", 1, 10);
-		this.addProduit("Twix", 10.45, 5);
+		this.lesProduits = produitDAO.selectionnerTousLesProduits();
 	}
 	
 	@Override
@@ -34,12 +35,9 @@ public class Catalogue implements I_Catalogue {
 			df.format(prix);
 			nom = nom.replaceAll("\t", " ");
 			nom = nom.trim();
-			for (I_Produit i_Produit : lesProduits) {
-				if (i_Produit.getNom().equals(nom)) {
-					return false;
-				}
+			if (!(nom.equals(produitDAO.selectionnerProduit(nom).getNom()))) {
+				return produitDAO.creerProduit(new Produit(nom, prix, qte));
 			}
-			return this.lesProduits.add(new Produit(nom, prix, qte));
 		}
 		return false;
 	}
@@ -60,41 +58,36 @@ public class Catalogue implements I_Catalogue {
 
 	@Override
 	public boolean removeProduit(String nom) {
-		for (I_Produit i_Produit : lesProduits) {
-			if (i_Produit.getNom().equals(nom)) {
-				this.lesProduits.remove(i_Produit);
-				return true;
+		for (I_Produit produit : lesProduits) {
+			if (nom.equals(produitDAO.selectionnerProduit(nom).getNom())) {
+				return produitDAO.supprimerProduit(produit);				
 			}
 		}
 		return false;
+
 	}
 
 	@Override
 	public boolean acheterStock(String nomProduit, int qteAchetee) {
-		if (qteAchetee > 0) {
-			for (I_Produit i_Produit : lesProduits) {
-				if (i_Produit.getNom().equals(nomProduit)) {
-					i_Produit.ajouter(qteAchetee);
-					return true;
-				}
+		if (Arrays.asList(getNomProduits()).contains(nomProduit)) {
+			I_Produit produit = produitDAO.selectionnerProduit(nomProduit);
+			if (produit.ajouter(qteAchetee)) {
+				return produitDAO.modifierProduit(produit);
 			}
 		}
+		
 		return false;
 	}
 
 	@Override
 	public boolean vendreStock(String nomProduit, int qteVendue) {
-		if (qteVendue > 0) {
-			for (I_Produit i_Produit : lesProduits) {
-				if (i_Produit.getNom().equals(nomProduit)) {
-					if (i_Produit.getQuantite() >= qteVendue && i_Produit.getQuantite() > 0) {
-						i_Produit.enlever(qteVendue);
-						return true;
-					}
-					return false;
-				}
+		if (Arrays.asList(getNomProduits()).contains(nomProduit)) {
+			I_Produit produit = produitDAO.selectionnerProduit(nomProduit);
+			if (produit.enlever(qteVendue)) {
+				return produitDAO.modifierProduit(produit);
 			}
 		}
+		
 		return false;
 	}
 
@@ -124,9 +117,8 @@ public class Catalogue implements I_Catalogue {
 
 	@Override
 	public void clear() {
-		for (Iterator<I_Produit> iterator = lesProduits.iterator(); iterator.hasNext();) {
-			I_Produit i_Produit = (I_Produit) iterator.next();
-			iterator.remove();
+		for (I_Produit produit : lesProduits) {
+			produitDAO.supprimerProduit(produit);
 		}
 	}
 	
@@ -138,11 +130,11 @@ public class Catalogue implements I_Catalogue {
 			bd1 = bd1.setScale(2, BigDecimal.ROUND_HALF_UP);
 			BigDecimal bd2 = new BigDecimal(i_Produit.getPrixUnitaireTTC());
 			bd2 = bd2.setScale(2, BigDecimal.ROUND_HALF_UP);
-			str += i_Produit.getNom()+" - prix HT : "+bd1+" ï¿½ - prix TTC : "+bd2+" ï¿½ - quantitï¿½ en stock : "+i_Produit.getQuantite()+"\n";
+			str += i_Produit.getNom()+" - prix HT : "+bd1+" € - prix TTC : "+bd2+" € - quantité en stock : "+i_Produit.getQuantite()+"\n";
 		}
 		BigDecimal bd3 = new BigDecimal(this.getMontantTotalTTC());
 		bd3 = bd3.setScale(2, BigDecimal.ROUND_HALF_UP);
-		str += "\nMontant total TTC du stock : "+bd3+" ï¿½";
+		str += "\nMontant total TTC du stock : "+bd3+" €";
 		str = str.replaceAll("\\.", ",");
 		return str;
 	}

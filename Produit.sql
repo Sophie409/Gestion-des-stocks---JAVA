@@ -17,3 +17,10 @@ BEGIN
   SELECT seq_id.NEXTVAL INTO :NEW.idProduit
   FROM DUAL;
 END;
+
+CREATE OR REPLACE PROCEDURE ajouterProduit(p_nom IN Produit.nom%TYPE, p_prixHT IN Produit.prixUnitaireHT%TYPE, p_qte IN Produit.quantiteStock%TYPE) IS
+
+BEGIN
+	INSERT INTO Produit (idProduit, nom, prixUnitaireHT, quantiteStock)
+	VALUES (seq_id.NEXTVAL, p_nom, p_prixHT, p_qte);
+END;
