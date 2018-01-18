@@ -5,7 +5,7 @@ import view.FenetreSuppressionProduit;
 
 public class ControllerNouveauSuppression {
 	
-	public static Catalogue cat = new Catalogue("cat");
+	public static Catalogue cat = new Catalogue();
 	
 	public static void demandeSuppression() {
 		String[] produits = cat.getNomProduits();

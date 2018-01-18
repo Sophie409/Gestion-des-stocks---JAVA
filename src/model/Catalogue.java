@@ -17,8 +17,7 @@ public class Catalogue implements I_Catalogue {
 	private List<I_Produit> lesProduits;
 	I_ProduitDAO produitDAO = new ProduitDAO();
 	
-	public Catalogue(String nom) {
-		this.nom = nom;
+	public Catalogue() {
 		this.lesProduits = produitDAO.selectionnerTousLesProduits();
 	}
 	

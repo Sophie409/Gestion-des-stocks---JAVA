@@ -78,15 +78,11 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 		
 		if (e.getSource() == btAfficher) {
 			ControllerEtatStock.affichageStock();
-//			new FenetreAffichage("aujourd'hui nous allons faire de la programmation en 5 couches");
 		}		
 		if (e.getSource() == btNouveauProduit) {
-//			new FenetreNouveauProduit(tabCategories);
-//			new FenetreNouveauProduit();
 			ControllerNouveauSuppression.demandeAjout();
 		}
 		if (e.getSource() == btSupprimerProduit) {
-//			new FenetreSuppressionProduit(tabProduits);
 			ControllerNouveauSuppression.demandeSuppression();
 		}
 //		if (e.getSource() == btNouvelleCategorie) {
@@ -96,12 +92,10 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 //			new FenetreSuppressionCategorie(tabCategories);
 //		}
 		if (e.getSource() == btAchat) {
-			ControllerAchatVente.demandeAchat();
-			//new FenetreAchat(tabProduits);			
+			ControllerAchatVente.demandeAchat();	
 		}
 		if (e.getSource() == btVente) {
 			ControllerAchatVente.demandeVente();
-			//new FenetreVente(tabProduits);
 		}
 		if (e.getSource() == btQuitter){
 			System.out.println("Au revoir");

@@ -78,9 +78,9 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 		btSupprimer.addActionListener(this);
 		btSelectionner.addActionListener(this);
 		
-		String[] tab  = {"Formacia" , "Le Redoutable", "Noitaicossa"}; 
+		String[] tab = /*ControllerCatalogue.ListerCatalogues()*/{"Formacia", "Le Redoutable", "Noitaicossa"};
 		modifierListesCatalogues(tab);
-		String[] tab2 = {"Formacia : 6 produits" , "Le Redoutable : 4 produits" , "Noitaicossa : 0 produits" };
+		String[] tab2 = /*ControllerCatalogue.ListerDetailsCatalogues()*/{"Formacia : 6 produits", "Le Redoutable : 3 produits", "Noitaicossa : 0 produits"};
 		modifierDetailCatalogues(tab2);
 		modifierNbCatalogues(3);
 		setVisible(true);
